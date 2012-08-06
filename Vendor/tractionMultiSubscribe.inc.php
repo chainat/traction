@@ -249,7 +249,7 @@ class tractionMultiSubscribe {
                   //$myRequestBody .= $key . "=" . $val;
             }
 		
-		trigger_error("Traction MultiSubscription Request: " . $myRequestBody, E_USER_NOTICE);
+		//trigger_error("Traction MultiSubscription Request: " . $myRequestBody, E_USER_NOTICE);
 		$myContentLength = strlen($myRequestBody);
 		
 		// create request header..
