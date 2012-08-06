@@ -124,7 +124,7 @@ class tractionMultiSubscribe {
 		
 		//array_push($this->customers, $myCustomer);  // add to customer array.
         $this->customer = $myCustomer;
-        trigger_error ("Updating traction with customer" .$myCustomer , E_USER_NOTICE);
+        //trigger_error ("Updating traction with customer" .$myCustomer , E_USER_NOTICE);
 	}
 	
 	public function getPostVars() {
@@ -230,21 +230,25 @@ class tractionMultiSubscribe {
 			$port = $default_port;
 		}
 		
+		
 		//create request body..
 		$myRequestBody = "";
-		foreach ($myDataArray as $key => $val) {
-			if (!empty($myRequestBody))
-				$myRequestBody .= "&";
-			
-			// for specially to treat multiple subscriptions..
-			$myPos = strpos($key, "SUBSCRIPTIONID_");
-			if ($myPos === false) {
-				$myRequestBody .= $key . "=" . urlencode($val);
-			} else {
-				$myRequestBody .= "SUBSCRIPTIONID=" . urlencode($val);
-			}
-			$myRequestBody .= $key . "=" . $val;
-		}
+		$sub_count = 0;
+           foreach ($myDataArray as $key => $val) {
+                  if (!empty($myRequestBody))
+                        $myRequestBody .= "&";
+                  
+                  // for specially to treat multiple subscriptions..
+                  $myPos = strpos($key, "SUBSCRIPTIONID_");
+                  if ($myPos === false) {
+                        $myRequestBody .= $key . "=" . urlencode($val);
+                  } else {
+                        $sub_count++;
+                        $myRequestBody .= "SUBSCRIPTIONID{$sub_count}=" . urlencode($val);
+                  }
+                  //$myRequestBody .= $key . "=" . $val;
+            }
+		
 		trigger_error("Traction MultiSubscription Request: " . $myRequestBody, E_USER_NOTICE);
 		$myContentLength = strlen($myRequestBody);
 		
