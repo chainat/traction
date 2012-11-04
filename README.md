@@ -24,7 +24,6 @@ I see the Traction API should sit very close to the model, thus I make a behavio
 		
 	To use this:
 	var $actsAs = array(
-			
 		'Traction.TractionAddCustomer'=>array(
 			"traction_uid"					=>	"your_endpoint", 							// traction username
 			"traction_pwd"					=>	'your_endpoint_password', 					// traction password
@@ -47,20 +46,20 @@ I see the Traction API should sit very close to the model, thus I make a behavio
 		
 		
 	3.2 MultiSubscribe
-		Add new/replace customer data to mailling list.
-			
+		Add a new or replace customer data to mailling list.
 		To use this:
+
 		var $actsAs = array(	
 			'Traction.TractionMultiSubscribe'=>array(
-					"traction_uid"					=>	"your_endpoint", 							// traction username
-					"traction_pwd"					=>	'your_endpoint_password', 					// traction password
-					"traction_ep"					=>	"your_endpoint_id",
-					"reply_url"						=>  "http://www.change_this_to_your_domain.com.au",
+					"traction_uid"                  =>	"your_endpoint", 		// traction username
+					"traction_pwd"			=>	'your_endpoint_password', 	// traction password
+					"traction_ep"			=>	"your_endpoint_id",
+					"reply_url"			=>      "http://www.change_this_to_your_domain.com.au",
 					
 					// Use default fields
 					// Custom Params
 					'custom_params_fields'			=> array(
-							2981398		=> 'postcode',								// .LG_Postcode
+                                                      2981398		=> 'postcode',			// Postcode
 					),
 					
 					//Note: we need to add array of mailingLists to data and send it along 										
@@ -81,7 +80,9 @@ I see the Traction API should sit very close to the model, thus I make a behavio
 
 Note:
 -----
+
 The plugins use default field name as described below. If you use other name than this, just overide it from your settings.
+
 	'default_mapping_fields'    =>	array(				
 		// Traction			=>  CakePHP Field
 		'firstName'			=> 	'first_name',
