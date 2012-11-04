@@ -2,6 +2,7 @@ CakePHP 2 Traction Plugin (version 1)
 =====================================
 
 Date: 06/08/2012
+
 By: Chainat Wongtapan
 
 I see the Traction API should sit very close to the model, thus I make a behaviour for it. There are multiple advantages we could get from this.
@@ -20,34 +21,40 @@ I see the Traction API should sit very close to the model, thus I make a behavio
 3. There are two APIs you can use
 	
 	3.1 AddCustomer
+
 	Just to add new customer data to Traction database with additional attributes
 		
-	To use this:
-	var $actsAs = array(
-		'Traction.TractionAddCustomer'=>array(
-			"traction_uid"					=>	"your_endpoint", 							// traction username
-			"traction_pwd"					=>	'your_endpoint_password', 					// traction password
-			"traction_ep"					=>	"your_endpoint_id",
-			"reply_url"					=>      "http://www.change_this_to_your_domain.com.au",
+	To use this api:
 
-			// Custom Params
-			'custom_params_fields'			=> array(
-                            // ID		=> 'CakePHP field name'
-                            1111111		=> 'postcode',								// Additional attributes
-                            2222222		=> 'optin_arrival',							
-                            3333333		=> 'optin_update',							
-                            ....
-			)
-		),
-	}
-		
-	In the model function:
-	$result = $this->tractionAddCustomer($data);
+		var $actsAs = array(
+			'Traction.TractionAddCustomer'=>array(
+				"traction_uid"					=>	"your_endpoint", 							// traction username
+				"traction_pwd"					=>	'your_endpoint_password', 					// traction password
+				"traction_ep"					=>	"your_endpoint_id",
+				"reply_url"					=>      "http://www.change_this_to_your_domain.com.au",
+
+				// Custom Params
+				'custom_params_fields'			=> array(
+	                            // ID		=> 'CakePHP field name'
+	                            1111111		=> 'postcode',								// Additional attributes
+	                            2222222		=> 'optin_arrival',							
+	                            3333333		=> 'optin_update',							
+	                            ....
+				)
+			),
+		}
+
+
+		In the model function:
+
+		$result = $this->tractionAddCustomer($data);
 		
 		
 	3.2 MultiSubscribe
-		Add a new or replace customer data to mailling list.
-		To use this:
+	
+	Add a new or replace customer data to mailling list.
+
+	To use this:
 
 		var $actsAs = array(	
 			'Traction.TractionMultiSubscribe'=>array(
