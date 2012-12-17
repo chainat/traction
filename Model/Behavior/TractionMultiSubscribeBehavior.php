@@ -144,7 +144,8 @@ class TractionMultiSubscribeBehavior extends ModelBehavior {
 			if (isset($data[$modelAlias][$cakePHPFieldName])){
 				$customAttributeArray[$tractionAttributeID] = $data[$modelAlias][$cakePHPFieldName];
 			}else{
-				debug($cakePHPFieldName . ' doesn\'t exist in your data array');
+				//debug($cakePHPFieldName . ' doesn\'t exist in your data array');
+                $this->log($cakePHPFieldName . ' doesn\'t exist in your data array', 'traction');
 			}
 		}
 		$tractionData["customAttributeArray"] = $customAttributeArray;
